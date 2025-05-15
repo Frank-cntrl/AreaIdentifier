@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/style.css"> <!-- Link to external CSS -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="calculator">
+        <h1>Enter Your Phone Number</h1>
+        <div class="input-group">
+            <label for="slider">Select Your phone number:</label>
+            <input type="range" id="slider" min="0000000000" max="9999999999" step="1" value="3478526263" />
+            <p id="slider-value">3478526263</p>
+        </div>
+        <button class = "area-code-btn" onclick="onAreaCodeButtonClick()">Determine Area Code</button>
+
+        <p id = "area-code"></p>
+    </div>
+</div>
+
+
+  <script src="js/script.js"></script> <!-- Link to external JavaScript -->
+</body>
+</html>
