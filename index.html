@@ -1,28 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Enter That Number</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="css/style.css"> <!-- Link to external CSS -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franccesco Petta - CS Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            padding: 20px; /* Add some padding for smaller screens */
+            box-sizing: border-box;
+        }
+    </style>
 </head>
-<body>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-blue-200 p-4">
+    <div class="bg-white p-8 sm:p-10 md:p-12 rounded-xl shadow-2xl max-w-lg w-full text-center transform transition-all duration-300 hover:scale-105">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+            Hello, I'm Franccesco Petta!
+        </h1>
+        <p class="text-lg text-gray-700 mb-6">
+            I'm a CS student with a strong interest in computers, how they work, software development, and cybersecurity.
+        </p>
+        <p class="text-lg text-gray-600 mb-10">
+            SUPPORT FOR ANY PROJECT IS AT THE EMAIL: enginesnine@gmail.com
+        </p>
+        <p class="text-lg text-gray-600 mb-10">
+            Below are a few of my projects.
+        </p>
 
-<div class="container">
-    <div class="calculator">
-        <h1>Enter Your Phone Number</h1>
-        <div class="input-group">
-            <label for="slider">Select Your phone number:</label>
-            <input type="range" id="slider" min="0000000000" max="9999999999" step="1" value="3478526263" />
-            <p id="slider-value">3478526263</p>
+        <div class="flex flex-col space-y-6">
+            <a href="AREACODE/phone.html"
+               class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-lg shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
+                </svg>
+                AREACODE (Phone Number Checker)
+            </a>
+
+            <a href="WEBASSEMPOS/POS.html"
+               class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-lg shadow-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v4m0 0H9m0 0a2 2 0 01-2-2V5a2 2 0 012-2h6a2 2 0 012 2v14a2 2 0 01-2 2z" />
+                </svg>
+                WEBASSEMPOS (Point-of-Sale System)
+            </a>
         </div>
-        <button class = "area-code-btn" onclick="onAreaCodeButtonClick()">Determine Area Code</button>
-
-        <p id = "area-code"></p>
     </div>
-</div>
-
-
-  <script src="js/script.js"></script> <!-- Link to external JavaScript -->
 </body>
 </html>
