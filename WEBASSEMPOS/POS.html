@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pizza Ordering System</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1a1a1a;
+            color: #00ff00; /* Green text for terminal feel */
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px); /* Adjust for margin */
+        }
+        #terminal-output {
+            background-color: #000;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1; /* Allow it to take available space */
+            margin-bottom: 10px;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-break: break-all; /* Break long words */
+        }
+        #terminal-input-container {
+            display: flex;
+            align-items: center;
+        }
+        #terminal-input {
+            background-color: #000;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box; /* Include padding in width */
+        }
+        #terminal-input:focus {
+            outline: none;
+            border-color: #00ff00;
+            box-shadow: 0 0 5px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Franks Pos</h1>
+    <div id="terminal-output"></div>
+    <div id="terminal-input-container">
+        <span>&gt; </span><input type="text" id="terminal-input" autofocus>
+    </div>
+
+    <script src="./index.js"></script>
+
+    <script>
+        // Initialize a global object 'term' for output, similar to console.log
+        // This is what terminal_addons.js (now integrated into index.js) expects for output redirection
+        window.term = {
+            output: function(text) {
+                const outputDiv = document.getElementById('terminal-output');
+                outputDiv.textContent += text + '\n'; // Add text and a newline
+                outputDiv.scrollTop = outputDiv.scrollHeight; // Scroll to bottom
+            }
+        };
+
+        // Get the input field
+        const inputField = document.getElementById('terminal-input');
+
+        // Function to process input
+        async function handleInput() {
+            const command = inputField.value;
+            inputField.value = ''; // Clear input field
+
+            term.output(`> ${command}`); // Echo the command
+
+            if (command.toLowerCase() === 'exit') {
+                term.output("Exiting application...");
+                inputField.disabled = true;
+                return;
+            }
+
+            try {
+                // Call the C++ processCommand function using the global Module object
+                // 'string' for input, 'number' (pointer) for return value
+                const resultPtr = Module.ccall('processCommand', 'number', ['string'], [command]);
+                const result = Module.UTF8ToString(resultPtr); // Convert pointer to JS string
+
+                term.output(result); // Display the C++ function's output
+            } catch (e) {
+                term.output("Error: " + e);
+                console.error("Error calling processCommand:", e);
+            }
+        }
+
+        // Add event listener for Enter key
+        inputField.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                handleInput();
+            }
+        });
+
+        // Wait for the Emscripten module to be fully initialized
+        // before interacting with its functions (like ccall, UTF8ToString).
+        Module.onRuntimeInitialized = () => {
+            console.log("C++ application initialized. Waiting for commands from JavaScript...");
+            // Start the application by sending an initial empty command
+            // This will trigger the initial prompt from your C++ state machine (STATE_ASK_PIN)
+            try {
+                const initialResultPtr = Module.ccall('processCommand', 'number', ['string'], ['']);
+                const initialResult = Module.UTF8ToString(initialResultPtr);
+                term.output(initialResult);
+            } catch (e) {
+                term.output("Initialisation Error: " + e);
+                console.error("Initialisation Error:", e);
+            }
+        };
+    </script>
+</body>
+</html>
