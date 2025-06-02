@@ -19,66 +19,56 @@
             box-sizing: border-box;
         }
 
-        /* Custom CSS for elements that should span the full width of the parent's background */
-        /* This applies to both HRs and buttons. Their negative margins are based on the inner dark grey div's padding. */
         .full-bleed-element {
-            display: block; /* Ensure it behaves as a block element */
+            display: block; 
             
-            /* These negative margins pull the element out into the parent's padding area */
-            /* The padding is now on the *outer* red div, so these values will be relative to that */
-            margin-left: -1rem;   /* Example: if outer div has p-4 (1rem) */
-            margin-right: -1rem;  /* Example: if outer div has p-4 (1rem) */
+            margin-left: -1rem;  
+            margin-right: -1rem; 
             
-            /* Width calculation: 100% of parent's *content width* + total horizontal negative margins */
-            width: calc(100% + 2rem); /* 100% + (1rem left + 1rem right) */
+            width: calc(100% + 2rem); 
         }
 
-        /* Responsive adjustments for different screen sizes for full-bleed-element */
-        @media (min-width: 640px) { /* sm breakpoint, if outer div has p-5 (1.25rem) */
+        @media (min-width: 640px) {
             .full-bleed-element {
                 margin-left: -1.25rem;
                 margin-right: -1.25rem;
-                width: calc(100% + 2.5rem); /* 100% + (1.25rem * 2) */
+                width: calc(100% + 2.5rem); 
             }
         }
-        @media (min-width: 768px) { /* md breakpoint, if outer div has p-6 (1.5rem) */
+        @media (min-width: 768px) { 
             .full-bleed-element {
                 margin-left: -1.5rem;
                 margin-right: -1.5rem;
-                width: calc(100% + 3rem); /* 100% + (1.5rem * 2) */
+                width: calc(100% + 3rem); 
             }
         }
 
-        /* Specific HR styling */
         .hr-full-bleed {
             border: none;
-            height: 8px; /* Thickness of the break line */
+            height: 8px;
             background-color: black;
-            margin-top: 0;    /* No vertical margin from HR itself */
-            margin-bottom: 0; /* No vertical margin from HR itself */
+            margin-top: 0; 
+            margin-bottom: 0; 
         }
 
-        /* Custom button style to match background and change text/icon color */
         .custom-button {
-            background-color: #1b1b1b; /* Same as the main div's background */
-            color: #F6F61F; /* Yellow text color */
-            border: none; /* Removed border to make it blend seamlessly */
-            padding-top: 1rem; /* py-4 equivalent */
-            padding-bottom: 1rem; /* py-4 equivalent */
-            /* No horizontal padding (px-8) as it's now full-bleed */
+            background-color: #1b1b1b;
+            color: #F6F61F; 
+            border: none; 
+            padding-top: 1rem;
+            padding-bottom: 1rem; 
         }
         .custom-button:hover {
-            background-color: #2a2a2a; /* Slightly darker on hover */
-            /* No border-color change as border is removed */
+            background-color: #2a2a2a; 
         }
-        /* Ensure SVG icons also get the yellow color, and ONLY for stroke where fill is not desired */
+        
         .custom-button svg {
-            stroke: #F6F61F; /* For all icons, ensures lines are yellow */
+            stroke: #F6F61F; 
         }
-        /* Specific rule for the GitHub icon if it needs a fill, or if you want it stroked */
-        .custom-button svg[fill="currentColor"] { /* Targets icons that use currentColor for fill by default */
-            fill: #F6F61F; /* Sets the fill for the GitHub icon specifically */
-            stroke: none; /* Ensure GitHub icon doesn't have a stroke if it's meant to be filled */
+        
+        .custom-button svg[fill="currentColor"] {
+            fill: #F6F61F; 
+            stroke: none; 
         }
     </style>
 </head>
@@ -87,7 +77,7 @@
         
         <div style="background-color: #1b1b1b;" class="text-center w-full h-full rounded-lg">
             
-            <div class="pt-5 sm:pt-5 md:pt-8">
+            <div class="pt-5 sm:pt-5 md:pt-2">
                 <h1 style="font-family: 'Times New Roman', Times, serif;" class="text-4xl sm:text-5xl text-[#E7191F] mb-0 leading-tight">
                     FRANCCESCO PETTA
                 </h1>
@@ -97,7 +87,7 @@
                 </p>
             </div>
             
-            <div class="flex flex-col space-y-0 p-5 sm:pb-0 md:p-6"> 
+            <div class="flex flex-col space-y-0 p-5 md:pb-0 md:p-6"> 
                 <hr class="hr-full-bleed full-bleed-element"> 
                 <a href="https://github.com/Frank-cntrl"
                     class="inline-flex items-center justify-left py-4 shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl custom-button full-bleed-element">
@@ -136,7 +126,6 @@
                     </svg>
                     PRIVACY POLICY
                 </a>
-                <hr class="hr-full-bleed full-bleed-element"> 
             </div>
         </div>
     </div>
