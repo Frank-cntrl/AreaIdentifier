@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoJo's Bizarre Adventure - Character Animation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            background-image: url('https://www.fightersgeneration.com/news2021/game4/stages/jojos-bizarre-adventure-capcom-clocktower-stage.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .character-sprite {
+            width: 90px;
+            height: 125px;
+            background-image: url('darby.png');
+            background-repeat: no-repeat;
+            
+            background-position: -10px -135px; 
+            
+            background-size: 850px auto; 
+
+            animation: playCharacterSprite 1s steps(10) infinite;
+
+            border: 2px solid #F6F61F;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(246, 246, 31, 0.7);
+        }
+
+        @keyframes playCharacterSprite {
+            from {
+                background-position-x: -10px;
+            }
+            to {
+                background-position-x: -840px;
+            }
+        }
+
+        .info-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #F6F61F;
+            padding: 1.5rem;
+            border-radius: 12px;
+            max-width: 500px;
+            margin-top: 2rem;
+            box-shadow: 0 0 15px rgba(246, 246, 31, 0.5);
+            text-align: center;
+        }
+
+        .original-image-display {
+            max-width: 100%;
+            height: auto;
+            border: 2px dashed #F6F61F;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(246, 246, 31, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col items-center p-4 sm:p-6 md:p-8">
+        <div class="character-sprite"></div>
+
+        <div class="info-box">
+            <h1 class="text-2xl font-bold mb-2">My Photos</h1>
+            <p class="text-base mb-4">
+                You like me for more than my code (which sucks by the way, maybe you noticed), here are some pictures taken by me.
+            </p>
+        </div>
+
+        <div>
+            <img src="photos/photo_1.JPG" class="original-image-display mx-auto">
+            <img src="photos/photo_2.JPG" class="original-image-display mx-auto">
+            <img src="photos/photo_3.JPG" class="original-image-display mx-auto">
+            <img src="photos/photo_4.JPG" class="original-image-display mx-auto">
+            <img src="photos/photo_5.JPG" class="original-image-display mx-auto">
+            <img src="photos/photo_6.JPG" class="original-image-display mx-auto">
+            <img src="photos/photo_7.JPG" class="original-image-display mx-auto">
+        </div>
+    </div>
+</body>
+</html>
